@@ -13,6 +13,7 @@ set fileencoding=utf-8
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
+Plugin 'rdolgushin/groovy.vim'
 Plugin 'Shougo/deoplete.nvim'
 Plugin 'Yggdroot/indentLine'
 Plugin 'airblade/vim-gitgutter'
@@ -55,7 +56,7 @@ set foldmethod=indent
 set foldlevel=99
 
  " Enable folding with the spacebar (leader is space, gives problem, argh)
- "nnoremap <space> za
+ " nnoremap <space> za
 
 " enable this to see docstring
 let g:SimpylFold_docstring_preview=1
@@ -127,7 +128,7 @@ set makeprg=g++\ %  " Configuration for :make in vim
 set mouse=a		    " Enable mouse usage (all modes)
 set nolist          " List disables line break
 set noswapfile      " prevent vim from creating swp file
-set pastetoggle=<F4>    " Toggle paste
+set pastetoggle=<F5>    " Toggle paste
 set showcmd		    " Show (partial) command in status line.
 set showmatch		" Show matching brackets.
 set smartcase		" Do smart case matching
@@ -145,6 +146,11 @@ set splitright
 set listchars=eol:•,tab:→\ ,trail:␣,extends:↷,precedes:↶,nbsp:⁔
 set list
 " .............................................................................
+" Resize pane
+nnoremap <silent> <Leader>+ :exe "resize " . (winheight(0) * 3/2)<CR>
+nnoremap <silent> <Leader>- :exe "resize " . (winheight(0) * 2/3)<CR>
+
+".............................................................................
 
 " have Vim jump to the last position when
 " reopening a file
@@ -167,6 +173,7 @@ autocmd Filetype python setlocal ts=4 sw=4 expandtab
 autocmd Filetype yaml setlocal ts=2 sw=2 expandtab
 autocmd Filetype yml setlocal ts=2 sw=2 expandtab
 au BufNewFile,BufRead *.py set fileformat=unix
+au BufRead,BufNewFile */playbooks/*.yml set filetype=yaml.ansible
 " .............................................................................
 
 " some commands from vim
@@ -201,10 +208,10 @@ map "+p :r!xclip -o -sel clip
 autocmd BufRead,BufNewFile *.md,*.tex set tw=79
 
 " Get line, word and character counts with F3:
-map <F3> :!wc <C-R>%<CR>
+map <F8> :!wc <C-R>%<CR>
 
 " Spell-check set to F6:
-map <F4> :setlocal spell! spelllang=en_us<CR>
+map <F6> :setlocal spell! spelllang=en_us<CR>
 
 noremap <Leader>y "*y
 noremap <Leader>p "*p

@@ -25,6 +25,7 @@ alias grep='grep --color -n'
 alias ..='cd ..'
 alias ....='cd ../..'
 alias ......='cd ../../..'
+alias countryroads='cd ~'
 alias df='df -hT'
 alias diff='colordiff'              # requires colordiff package
 alias du='du -c -h'
@@ -114,12 +115,15 @@ alias vpn='nmcli con up Brno\ \(BRQ\) --ask'
 alias vpn_down='nmcli con down Brno\ \(BRQ\)'
 
 
+alias capsswapescame='setxkbmap -option caps:swapescape'
 
 # Screenlayout server
-alias lg='bash ~/.screenlayout/lg27-4k-alone.sh'
+alias laptop='bash ~/.screenlayout/plain.sh'
+alias bedroom='bash ~/.screenlayout/4k.sh'
 
 # CleanUp
 alias cleanup='bash ~/cleanup.sh'
+alias clean_tmux='tmux list-sessions | awk "BEGIN{FS=:}{print $1}" | xargs -n 1 tmux kill-session -t'
 
 # application switch aliae
 alias vim='nvim'
@@ -129,13 +133,25 @@ alias ci_admin='ssh siddharthvipul1@admin.ci.centos.org'
 alias cico_admin='ssh cico-admins@slave06.ci.centos.org'
 alias n1_hufty='ssh siddharthvipul1@n1.hufty.ci.centos.org'
 alias duffy_n1='ssh siddharthvipul1@n1.hufty.ci.centos.org -t "sudo -i -u duffy"'
+alias jenkins_master='ssh siddharthvipul1@jenkins.ci.centos.org'
 
 
 # Audio, bluetooth devices and connectivity
-alias audio='pavucontrol'
 alias xm3='bluetoothctl connect CC:98:8B:1B:47:A4'
 alias mi_speaker='bluetoothctl connect 00:9E:C8:60:6A:6B'
-alias clean_tmux='tmux list-sessions | awk "BEGIN{FS=:}{print $1}" | xargs -n 1 tmux kill-session -t'
+
+
 alias disconnect_bluetooth='bluetoothctl disconnect'
 alias devconfcz_wifi="curl https://147.229.254.98/login.php -H 'Host: wifigw.cis.vutbr.cz' -H 'Content-Type: application/x-www-form-urlencoded' --data 'user=devconfcz&auth=any&password=Brno2019' --compressed -k -o /dev/null"
 alias dock='boltctl authorize 004c6830-55d7-0801-ffff-ffffffffffff'
+alias lock='bash ~/tmp/fast_lock.sh'
+
+
+# get weather
+alias get_weather='curl http://v2.wttr.in'
+
+#night light
+alias laptop_nightmode='xrandr --output eDP-1 --brightness 0.5'
+
+# shorten the xclip
+alias xc='xclip -selection clipboard'
